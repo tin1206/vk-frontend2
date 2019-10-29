@@ -56,6 +56,12 @@ class Sidebar extends Component {
               </Menu.Item>
           </SubMenu>
           <Menu.Item key="5">
+            <Link to = '/contracts'>
+              <Icon type="border-left" />
+               <span>Contracts</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="5">
             <Link to = '/attendance'>
               <Icon type="border-left" />
                <span>Attendance</span>
