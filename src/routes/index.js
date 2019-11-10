@@ -13,7 +13,8 @@ import ContractForm from '../components/contracts/contractForm';
 import Dashboard from '../components/dashboard';
 import EmployeeForm from '../components/employee/employeeForm';
 import Signin from '../components/authentication/signin';
-import Homepage from '../components/homepage'
+import Homepage from '../components/homepage';
+import AttendanceScanner from '../components/attendance/attendanceScanner';
 
 
 export const auth_routes = () => {
@@ -46,6 +47,7 @@ export const unauth_routes = () => {
         <Switch>
             <Route path='/signin' component = {Signin} />
             <Route path='/clients/signin' component = {ClientAuth} />
+            <Route path='/attendance_scanner' component = {AttendanceScanner} />
             <Route path='/' component = {Homepage} />
         </Switch>
     )

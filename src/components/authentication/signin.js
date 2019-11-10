@@ -6,9 +6,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Redirect } from "react-router-dom";
 
-import "../../stylesheets/signin.css"
+import "../../stylesheets/signin.css";
 
-import {sign_in} from '../../redux/actions/signinActions'
+import {sign_in} from '../../redux/actions/signinActions';
+
 class Signin extends Component{
 
     handleSubmit = e => {

@@ -47,7 +47,7 @@ export const fetch_client_list = (history) => {
 
 export const auth_client = (values, history) => {
     return dispatch => {
-        axios.get(`${HOST_URL}/authentication/client_sign`, values)
+        axios.post(`${HOST_URL}/authentication/client_sign`, values)
         .then((response) => {
             if(response.data.success){
                 dispatch(auth_client_action(response.data.data))
