@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Row, Col } from 'antd';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { Card } from 'antd';
+    import { connect } from 'react-redux';
 
 class ClientAuth extends Component {
 
@@ -17,15 +18,20 @@ class ClientAuth extends Component {
         )
     }
 
+    componentDidMount(){
+            window.navigator.vibrate(1000)
+    }
+
 
     render(){
+            console.log(this.props)
         const { getFieldDecorator } = this.props.form;
         return(
             <div>
                 <Row type="flex" justify="space-around" align="middle" style={{minHeight: "100vh"}}> 
                     <Col xs = {22} md={6}>
                         <Card>
-                            <Form onSubmit={this.handleSubmit} className="client-login-form">
+                                <Form onSubmit={() => this.handleSubmit(this.props)} className="client-login-form">
                                 <Form.Item>
                                 {getFieldDecorator('client_token', {
                                     rules: [{ required: true, message: 'Please input your username!' }],
@@ -48,4 +54,9 @@ class ClientAuth extends Component {
     }
 }
 
-export default Form.create({ name: "client-login"})(ClientAuth)
+const mapStateToProps = () => (state) => {
+    return {
+            client: state.clients
+    }
+}
+                                                                                            export default connect(mapStateToProps, null)(Form.create({ name: "client-login"})(ClientAuth))

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import QrReader from 'react-qr-reader'
 
-
+const vibrate = (time) => {
+    window.navigator.vibrate(time)
+}
 class QrScanner extends Component {
     state = {
       result: 'No result'
@@ -12,6 +14,7 @@ class QrScanner extends Component {
         this.setState({
           result: data
         })
+          vibrate(500)
       }
     }
     handleError = err => {

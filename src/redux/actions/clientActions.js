@@ -18,8 +18,7 @@ export const create_client = (values, history) => {
         })
     }
 }
-
-
+        
 const create_client_action = (payload) => {
     return {
         type: CLIENT_CREATE_SUCCESS,
