@@ -2,42 +2,63 @@ import { Row, Col } from 'antd';
 import React, {Component} from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { Card } from 'antd';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Redirect } from "react-router-dom";
 
 import "../../stylesheets/signin.css"
 
+import {sign_in} from '../../redux/actions/signinActions'
 class Signin extends Component{
 
     handleSubmit = e => {
         e.preventDefault();
-        localStorage.setItem('token', "12345")
-        window.location.reload()
-        // this.props.form.validateFields((err, values) => {
-        //   if (!err) {
-        //     console.log('Received values of form: ', values);
-        //   }
-        // });
+        console.log("handle Submit")
+        // localStorage.setItem('token', "12345")
+        this.props.form.validateFields((err, values) => {
+          if (!err) {
+            this.props.sign_in(values, this.props.history)
+          }
+          else{
+              
+          }
+        });
       };
 
     render(){
+        console.log(this.props)
+        const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form
+        const isAutheticated = this.props.sign_in_state.isAutheticated
         return(
             <div>
+            {isAutheticated ? <Redirect to='/' /> 
+            :
+            
                 <Row type="flex" justify="space-around" align="middle" style={{minHeight: "100vh"}}>
-                  <Col xs={23} sm={4}> 
+                  <Col xs={23} sm={6} md={6}> 
                    <div>
                        <Card>
                         <Form onSubmit={this.handleSubmit} className="login-form">
                             <Form.Item>
-                                <Input
-                                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                placeholder="Username"
-                                />
+                            {getFieldDecorator('email', {
+                                rules: [{ required: true, message: 'Please input your username!' }],
+                            })(
+                            <Input
+                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                            placeholder="Username"
+                            />,
+                            )}
                             </Form.Item>
                             <Form.Item>
+                                {getFieldDecorator('password', {
+                                    rules: [{ required: true, message: 'Please input your Password!' }],
+                                })(
                                 <Input
                                 prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                 type="password"
                                 placeholder="Password"
-                                />
+                                />,
+                                )}
                             </Form.Item>
                             <Form.Item>
                                 <Checkbox>Remember me</Checkbox>
@@ -54,12 +75,19 @@ class Signin extends Component{
                    </div>
                  </Col>
                 </Row>
-
-            </div>
-
+         }
+         </div>
         )
 
     }
 }
+const mapDispatchToProps = dispatch => bindActionCreators({
+    sign_in: sign_in
+}, dispatch)
 
-export default Signin
+const mapStateToProps = () => (state) => {
+    return {
+        sign_in_state: state.auth
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create({name: 'login-form'})(Signin))

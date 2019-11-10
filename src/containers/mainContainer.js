@@ -16,7 +16,7 @@ class MainContainer extends Component {
                 <Sidebar />
                 <Layout>
                     <Content style={{ margin: '0 16px' }}>
-                        <Navbar />
+                        {/* <Navbar /> */}
                     <div style={{ padding: 24, background: '#fff', minHeight: '90vh' }}>
                         {auth_routes()}
                     </div>

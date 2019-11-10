@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import { Table } from 'antd';
+import {fetch_admin_list} from '../../redux/actions/adminActions'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 const columns = [
     {
@@ -48,16 +51,28 @@ class AdminIndex extends Component{
     }
 
     componentDidMount(){
-        this.setState({data: data})
+        this.props.fetch_admin_list()
     }
     render(){
         return(
-            <Table
+            <div>
+                <Table
                 columns={columns}
-                dataSource={this.state.data}
-            />
+                dataSource={this.props.admins.admin}
+                />
+            </div>
         )
     }
 }
 
-export default AdminIndex
+const mapStateToProps = () => (state) => {
+    return{
+        admins: state.admins
+    }
+}
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    fetch_admin_list: fetch_admin_list
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminIndex)

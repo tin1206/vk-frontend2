@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import { Table } from 'antd';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import {fetch_employee_list} from '../../redux/actions/employeeActions'
+
 
 const columns = [
     {
@@ -23,6 +27,10 @@ const columns = [
     {
       title: 'EmployeeID',
       dataIndex: 'employee_id',
+    },
+    {
+      title: 'Mobile',
+      dataIndex: 'mobile_no',
     },
   ];
 
@@ -72,16 +80,26 @@ class EmployeeIndex extends Component{
     }
 
     componentDidMount(){
-        this.setState({data: data})
+      this.props.fetch_employee_list()
     }
     render(){
         return(
             <Table
                 columns={columns}
-                dataSource={this.state.data}
+                dataSource={this.props.employees.employees}
             />
         )
     }
 }
 
-export default EmployeeIndex
+const mapStateToProps = () => (state) => {
+  return{
+      employees: state.employees
+  }
+}
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  fetch_employee_list: fetch_employee_list
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeIndex)

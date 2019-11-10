@@ -2,25 +2,28 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import MainContainer from './containers/mainContainer'
 import Signin from './components/authentication/signin'
-
+import { connect } from 'react-redux';
+import {unauth_routes} from './routes'
 
 class App extends Component {
-  constructor(){
-    super()
-    this.state = {token: localStorage.getItem('token')}
+  constructor(props){
+    super(props)
+    this.state = {token: this.props.auth.isAutheticated}
   }
   render(){
     return (
-      <Router>
-        {this.state.token ? 
+        <Router>
+        {this.props.auth.isAutheticated ? 
         <MainContainer /> :
-          <Signin />
+         unauth_routes()
         }
-        
-      </Router>
-
+        </Router>
     );
   }
 }
-
-export default App;
+const mapStateToProps = () => (state) => {
+  return {
+    auth: state.auth
+  }
+}
+export default connect(mapStateToProps)(App);

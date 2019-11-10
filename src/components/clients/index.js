@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
 import { Table } from 'antd';
+import { connect } from 'react-redux';
+import {fetch_client_list} from '../../redux/actions/clientActions'
+import { bindActionCreators } from 'redux';
+
+
 
 const columns = [
     {
@@ -12,30 +17,11 @@ const columns = [
       title: 'Location',
       dataIndex: 'location',
     },
+    {
+      title: 'Priority',
+      dataIndex: 'priority',
+    },
   ];
-
-  const data = [
-      {
-          key: '1',
-          name: "Santosh Ghode",
-          location: "Mumbai",
-      },
-      {
-          key: '1',
-          name: "Ratan Singh",
-          location: "Pune",
-      },
-      {
-          key: '1',
-          name: "Ratan Singh",
-          location: "Pune",
-      },
-      {
-          key: '1',
-          name: "Ratan Singh",
-          location: "Pune",
-      },
-  ]
 
 class ClientIndex extends Component{
     constructor(){
@@ -48,16 +34,28 @@ class ClientIndex extends Component{
     }
 
     componentDidMount(){
-        this.setState({data: data})
+        this.props.fetch_client_list(this.props.history)
     }
     render(){
         return(
-            <Table
+            <div>
+               <Table
                 columns={columns}
-                dataSource={this.state.data}
-            />
+                dataSource={this.props.clients.clients}
+                 />
+            </div>
         )
     }
 }
 
-export default ClientIndex
+const mapStateToProps = () => (state) => {
+    return{
+        clients: state.clients
+    }
+}
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    fetch_client_list: fetch_client_list
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClientIndex)
