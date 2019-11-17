@@ -1,6 +1,7 @@
 import {ADMIN_CREATE_SUCCESS, FETCH_ADMIN_LIST} from '../../constants/admins';
 import {HOST_URL} from '../../constants/api';
 import axios from 'axios';
+import {sign_out} from './signinActions';
 
 
 export const create_admin = (values, history) => {
@@ -13,6 +14,11 @@ export const create_admin = (values, history) => {
             if(response.data.success){
                 dispatch(create_admin_action(response.data.data))
                 history.push('/admins')
+            }
+            else{
+                if(response.data.un_auth){
+                    dispatch(sign_out)
+                }
             }
         })
     }

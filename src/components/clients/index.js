@@ -21,6 +21,10 @@ const columns = [
       title: 'Priority',
       dataIndex: 'priority',
     },
+    {
+      title: 'Token',
+      dataIndex: 'client_id'
+    }
   ];
 
 class ClientIndex extends Component{

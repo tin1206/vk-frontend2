@@ -15,12 +15,12 @@ function Homepage(){
             >
                 <Menu.Item key="1">
                   <Link to ='/signin'>
-                    Admin
+                    Admin Login
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="2">
                   <Link to = '/clients/signin'>
-                    Clients
+                    Client Login
                   </Link>
                 </Menu.Item>
                 {/* <Menu.Item key="3">nav 3</Menu.Item> */}

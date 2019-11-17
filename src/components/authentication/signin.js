@@ -2,6 +2,9 @@ import { Row, Col } from 'antd';
 import React, {Component} from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { Card } from 'antd';
+import { Alert } from 'antd';
+import { Spin } from 'antd';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Redirect } from "react-router-dom";
@@ -39,6 +42,9 @@ class Signin extends Component{
                   <Col xs={23} sm={6} md={6}> 
                    <div>
                        <Card>
+                        { this.props.sign_in_state.error_message &&
+                        <Alert message="Invalid email or password" type="error" />
+                         }
                         <Form onSubmit={this.handleSubmit} className="login-form">
                             <Form.Item>
                             {getFieldDecorator('email', {
@@ -46,7 +52,8 @@ class Signin extends Component{
                             })(
                             <Input
                             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                            placeholder="Username"
+                            placeholder="Email"
+                            type="email"
                             />,
                             )}
                             </Form.Item>
@@ -64,12 +71,16 @@ class Signin extends Component{
                             <Form.Item>
                                 <Checkbox>Remember me</Checkbox>
                                 <a className="login-form-forgot" href="">
-                                Forgot password
+                                {/* Forgot password */}
                                 </a>
-                                <Button type="primary" htmlType="submit" className="login-form-button">
+                                <Button type="primary" 
+                                        htmlType="submit" 
+                                        className="login-form-button"
+                                        loading={this.props.sign_in_state.iconLoading}
+                                      >
                                     Log in
                                 </Button>
-                                    Or <a href="">register now!</a>
+                                    {/* Or <a href="">register now!</a> */}
                             </Form.Item>
                         </Form>
                        </Card>

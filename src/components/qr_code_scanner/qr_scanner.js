@@ -5,15 +5,14 @@ const vibrate = (time) => {
     window.navigator.vibrate(time)
 }
 class QrScanner extends Component {
+ 
     state = {
       result: 'No result'
     }
    
     handleScan = data => {
       if (data) {
-        this.setState({
-          result: data
-        })
+          this.props.onScanSuccess(data)
           vibrate(500)
       }
     }
@@ -29,7 +28,6 @@ class QrScanner extends Component {
             onScan={this.handleScan}
             style={{ width: '100%' }}
           />
-          <p>{this.state.result}</p>
         </div>
       )
     }

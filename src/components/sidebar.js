@@ -70,12 +70,6 @@ class Sidebar extends Component {
             </Link>
           </Menu.Item>
           <Menu.Item key="8">
-            <Link to = '/scanner'>
-              <Icon type="border-left" />
-               <span>Scanner</span>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="9">
             <Icon type="logout" />
             <SignOut />
           </Menu.Item>

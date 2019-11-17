@@ -1,7 +1,8 @@
 import {CLIENT_CREATE_SUCCESS, FETCH_CLIENT_LIST, AUTH_CLIENT_SUCCESS} from '../../constants/clients';
 import {HOST_URL} from '../../constants/api';
 import axios from 'axios';
-import { dispatch } from 'rxjs/internal/observable/pairs';
+import {sign_out} from './signinActions';
+
 
 
 export const create_client = (values, history) => {
@@ -52,6 +53,11 @@ export const auth_client = (values, history) => {
             if(response.data.success){
                 dispatch(auth_client_action(response.data.data))
                 history.push('/attendance_scanner')
+            }
+            else{
+                if(response.data.un_auth){
+                    dispatch(sign_out)
+                }
             }
         })
     }

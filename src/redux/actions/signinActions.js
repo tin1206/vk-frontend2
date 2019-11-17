@@ -1,4 +1,4 @@
-import {SIGN_IN_SUCCESS, SIGN_IN_LOADING, SIGN_OUT_SUCCESS} from '../../constants/authentication';
+import {SIGN_IN_SUCCESS, SIGN_IN_LOADING, SIGN_OUT_SUCCESS, SIGN_IN_FAIL} from '../../constants/authentication';
 import {HOST_URL} from '../../constants/api';
 import axios from 'axios';
 
@@ -16,6 +16,9 @@ export const sign_in = (values, history) => {
             history.push('/')
 
         }
+        else{
+            dispatch(sign_in_fail_action())
+        }
     })
    }
 }
@@ -31,6 +34,12 @@ export const sign_out = (value) => {
 const sign_out_action = () => {
     return {
         type: SIGN_OUT_SUCCESS
+    }
+}
+
+const sign_in_fail_action = () => {
+    return{
+        type: SIGN_IN_FAIL
     }
 }
 

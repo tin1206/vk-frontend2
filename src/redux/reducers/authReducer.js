@@ -7,7 +7,9 @@ const initialState = {
     token: localStorage.getItem('token'),
     isAutheticated: localStorage.getItem('token') ? true : false,
     isLoading: false,
-    user: null
+    user: null,
+    sign_in_disabled: false,
+    error_message: false,
 }
 
 export default function(state = initialState, action) {
@@ -23,7 +25,9 @@ export default function(state = initialState, action) {
                 ...state,
                 isAutheticated: false,
                 isLoading: false,
-                user: null
+                user: null,
+                sign_in_disabled: false,
+                error_message: true
             };
 
         case SIGN_IN_SUCCESS:
@@ -32,7 +36,9 @@ export default function(state = initialState, action) {
                 isAutheticated: true,
                 token: action.payload.token,
                 isLoading: false,
-                user: action.payload.data
+                user: action.payload.data,
+                error_message: false,
+                sign_in_disabled: false,
             };
 
         case SIGN_OUT_SUCCESS:
