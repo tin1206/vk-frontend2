@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import { Redirect } from "react-router-dom";
 
 import "../../stylesheets/signin.css";
+import '../../stylesheets/homepage.css';
 
 import {sign_in} from '../../redux/actions/signinActions';
 
@@ -17,8 +18,6 @@ class Signin extends Component{
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log("handle Submit")
-        // localStorage.setItem('token', "12345")
         this.props.form.validateFields((err, values) => {
           if (!err) {
             this.props.sign_in(values, this.props.history)
@@ -30,11 +29,10 @@ class Signin extends Component{
       };
 
     render(){
-        console.log(this.props)
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form
         const isAutheticated = this.props.sign_in_state.isAutheticated
         return(
-            <div>
+            <div className = {'backgroundImage'}>
             {isAutheticated ? <Redirect to='/' /> 
             :
             

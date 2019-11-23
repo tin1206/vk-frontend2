@@ -5,6 +5,7 @@ import { Card } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { auth_client } from '../../redux/actions/clientActions';
+import '../../stylesheets/homepage.css';
 
 class ClientAuth extends Component {
 
@@ -12,7 +13,6 @@ class ClientAuth extends Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if(!err){
-                console.log(values)
                 props.auth_client(values, props.history)
             }else{
 
@@ -21,16 +21,10 @@ class ClientAuth extends Component {
         )
     }
 
-    componentDidMount(){
-            window.navigator.vibrate(1000)
-    }
-
-
     render(){
-        console.log(this.props)
         const { getFieldDecorator } = this.props.form;
         return(
-            <div>
+            <div className = {'backgroundImage'}>
                 <Row type="flex" justify="space-around" align="middle" style={{minHeight: "100vh"}}> 
                     <Col xs = {22} md={6}>
                         <Card>

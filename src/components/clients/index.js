@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Table } from 'antd';
 import { connect } from 'react-redux';
-import {fetch_client_list} from '../../redux/actions/clientActions'
+import {fetch_client_list} from '../../redux/actions/clientActions';
 import { bindActionCreators } from 'redux';
 
 

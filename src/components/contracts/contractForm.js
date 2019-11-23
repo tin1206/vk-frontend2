@@ -20,7 +20,6 @@ for (let i = 0; i < 20; i++) {
 const oriTargetKeys = mockData.filter(item => +item.key % 3 > 1).map(item => item.key);
 
 const clientSelect = (value) => {
-  console.log(value)
 }
 
 const client_selector = (clients) => {

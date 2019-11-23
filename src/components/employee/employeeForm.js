@@ -32,11 +32,8 @@ const tailFormItemLayout = {
 
 const handleSubmit = (e,props) => {
     e.preventDefault();
-    console.log("handle Submit")
-    // localStorage.setItem('token', "12345")
     props.form.validateFields((err, values) => {
       if (!err) {
-          console.log(values)
         props.create_employee(values, props.history)
       }
       else{
@@ -78,7 +75,6 @@ const handleSubmit = (e,props) => {
   }
 
 function EmployeeForm(props){
-  console.log(props)
     const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = props.form
 
     return(

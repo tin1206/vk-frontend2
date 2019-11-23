@@ -5,13 +5,10 @@ import {sign_out} from '../../redux/actions/signinActions';
 import signin from './signin';
 
 const handleClick = (props) => {
-    console.log("clickled")
-    console.log(props)
     props.sign_out_action()
 }
 
 function SignOut(props){
-    console.log(props)
     return(
         <span onClick={() => handleClick(props)}>
             Sign Out

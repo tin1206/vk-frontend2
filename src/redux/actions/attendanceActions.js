@@ -1,4 +1,4 @@
-import {RECORD_ATTENDANCE_SUCCESS, RECORD_ATTENDANCE_LOAD, LOAD_ATTENDANCE_START, LOAD_ATTENDANCE_SUCCESS} from '../../constants/attendance';
+import {LOAD_EMPLOYEE_ATTENDANCE, RECORD_ATTENDANCE_SUCCESS, RECORD_ATTENDANCE_LOAD, LOAD_ATTENDANCE_START, LOAD_ATTENDANCE_SUCCESS} from '../../constants/attendance';
 import {HOST_URL} from '../../constants/api';
 import axios from 'axios';
 
@@ -36,7 +36,6 @@ export const load_attendance = (values) => {
         dispatch(load_attendance_start_action())
         axios.get(`${HOST_URL}/working_days`,{params: {...values},headers: {Authorization: localStorage.getItem('token')}})
         .then((response) => {
-            console.log(response)
             if(response.data.success){
                 dispatch(load_attendance_success_action(response.data.data))
             }
@@ -54,6 +53,27 @@ const load_attendance_start_action = () => {
 const load_attendance_success_action = (payload) => {
     return {
         type: LOAD_ATTENDANCE_SUCCESS,
+        payload: payload
+    }
+}
+
+
+export const load_client_attendance = (values) => {
+    const headers = {Authorization: localStorage.getItem('token')}
+    return dispatch => {
+        dispatch(load_attendance_start_action())
+        axios.get(`${HOST_URL}/clients/employees_attendance`, {params: {...values}, headers: {...headers}})
+        .then((response) => {
+          if(response.data.success){
+              dispatch(load_client_attendance_action(response.data.data))
+          }
+        })
+    }
+}
+
+const load_client_attendance_action = (payload) => {
+    return {
+        type: LOAD_EMPLOYEE_ATTENDANCE,
         payload: payload
     }
 }

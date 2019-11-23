@@ -45,7 +45,6 @@ const events = () => {
     }
 
     handleChange = (value) => {
-        console.log(value)
         this.setState({...this.state, selectedEmployee: value})
         this.props.load_attendance({employee_id: value,
                                     month: this.state.currentMonth + 1,
@@ -79,7 +78,6 @@ const events = () => {
    calendarRef = React.createRef()
 
     render(){
-        console.log(this.props)
         return(
             <div>
                 <h4> Select Employee</h4>

@@ -18,7 +18,6 @@ class AttendanceScanner extends Component{
 
         
     render(){
-        console.log(this.props)
         return(
             <div>
                 <QrScanner onScanSuccess = {this.onScanSuccess} />
