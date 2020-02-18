@@ -1,19 +1,17 @@
-import React, {Component} from 'react';
-import { Row, Col } from 'antd';
+import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
-import bg from '../../images/bg.jpg'
 import '../../stylesheets/homepage.css'
 const { Header} = Layout;
 
 function Homepage(){
     return(
        <div className = {'backgroundImage'}>
-        <Header>
+        <Header style={{backgroundColor: 'inherit'}}>
             <Menu
                 theme="dark"
                 mode="horizontal"
-                style={{ lineHeight: '64px' }}
+                style={{  backgroundColor: 'inherit', border: '0px', color: '#ffffff' }}
             >
                 <Menu.Item key="1">
                   <Link to ='/signin'>

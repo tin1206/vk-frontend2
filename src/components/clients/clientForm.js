@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Row, Col } from 'antd';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button} from 'antd';
 import { Card } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
+import { BrowserRouter as Router} from 'react-router-dom';
 import MainContainer from './containers/mainContainer'
-import Signin from './components/authentication/signin'
 import { connect } from 'react-redux';
 import {unauth_routes} from './routes'
 

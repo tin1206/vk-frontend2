@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { Card } from 'antd';
 import { Alert } from 'antd';
-import { Spin } from 'antd';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {sign_out} from '../../redux/actions/signinActions';
-import signin from './signin';
+
 
 const handleClick = (props) => {
     props.sign_out_action()

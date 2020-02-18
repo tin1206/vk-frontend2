@@ -10,6 +10,7 @@ import Attendance from '../components/attendance';
 import QrScanner from '../components/qr_code_scanner/qr_scanner';
 import ContractIndex from '../components/contracts';
 import ContractForm from '../components/contracts/contractForm';
+import ContractEdit from '../components/contracts/contractEdit';
 import Dashboard from '../components/dashboard';
 import EmployeeForm from '../components/employee/employeeForm';
 import Signin from '../components/authentication/signin';
@@ -21,8 +22,9 @@ export const auth_routes = () => {
     return(
         <Switch>
             <Route path='/contracts/new' component = {ContractForm} />
-            <Route path='/scanner' component = {QrScanner} />
+            <Route path='/contracts/edit' component = {ContractEdit} />
             <Route path='/contracts' component = {ContractIndex} />
+            <Route path='/scanner' component = {QrScanner} />
             <Route path='/clients/new' component = {ClientForm} />
             <Route path='/clients' component = {ClientIndex} />
             <Route path='/attendance' component = {Attendance} />

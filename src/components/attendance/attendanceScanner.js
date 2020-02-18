@@ -7,10 +7,6 @@ import {record_attendance} from '../../redux/actions/attendanceActions';
 
 class AttendanceScanner extends Component{
 
-    constructor(){
-        super()
-    }
-
     onScanSuccess = (data) => {
         const values = {client_id: this.props.client.id, employee_id: data}
         this.props.record_attendance(values)

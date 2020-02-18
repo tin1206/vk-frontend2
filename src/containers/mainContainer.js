@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-import Navbar from "../components/navbar";
+import { Layout } from 'antd';
 import Sidebar from "../components/sidebar";
-import AdminIndex from '../components/admin'
 import {auth_routes} from '../routes'
 
 
