@@ -22,7 +22,7 @@ class Signin extends Component{
             this.props.sign_in(values, this.props.history)
           }
           else{
-              
+
           }
         });
       };
@@ -32,11 +32,11 @@ class Signin extends Component{
         const isAutheticated = this.props.sign_in_state.isAutheticated
         return(
             <div className = {'backgroundImage'}>
-            {isAutheticated ? <Redirect to='/' /> 
+            {isAutheticated ? <Redirect to='/' />
             :
-            
+
                 <Row type="flex" justify="space-around" align="middle" style={{minHeight: "100vh"}}>
-                  <Col xs={23} sm={6} md={6}> 
+                  <Col xs={23} sm={6} md={6}>
                    <div>
                        <Card>
                         { this.props.sign_in_state.error_message &&
@@ -70,10 +70,10 @@ class Signin extends Component{
                                 <a className="login-form-forgot" href="">
                                 {/* Forgot password */}
                                 </a>
-                                <Button type="primary" 
-                                        htmlType="submit" 
+                                <Button type="primary"
+                                        htmlType="submit"
                                         className="login-form-button"
-                                        loading={this.props.sign_in_state.iconLoading}
+                                        loading={this.props.sign_in_state.isLoading}
                                       >
                                     Log in
                                 </Button>
